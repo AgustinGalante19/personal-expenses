@@ -14,7 +14,7 @@ interface Props {
 function CurrencyCard({ imageName, name, percentaje, buy, sell }: Props) {
   return (
     <div className={styles["currency-card-body"]}>
-      <div className={"currency-img"}>
+      <div className={styles["currency-img"]}>
         <Image
           height={50}
           width={50}

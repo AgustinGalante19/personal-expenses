@@ -1,6 +1,6 @@
 :root {
   --primary: #49a580;
-  --red: #FF4648;
+  --red: #ff4648;
   --secondary: #f1f6f2;
   --background: #f1f1f1;
   --white: #fff;
@@ -29,7 +29,6 @@
 
 .container {
   width: 1400px;
-  background-color: var(--white);
   margin: auto;
   padding: 15px;
   border-radius: 10px;
@@ -40,8 +39,8 @@
   gap: 10px;
   overflow: hidden;
   height: 100px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
-  background-color: white;
+  margin: 20px 0px;
 }
