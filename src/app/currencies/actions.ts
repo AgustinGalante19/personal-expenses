@@ -1,58 +1,18 @@
 "use server"
 
-import Crypto from "../data/crypto.json" assert { type: "json" }
-import Dollar from "../data/dollar.json" assert { type: "json" }
-
-interface CurrencyResponse {
-  currency: string
-  name: string
-  buy: number
-  sell: number | null
-  image: string
-  updateDate: Date
-  percentaje?: number
-}
-
-interface Response {
-  status: number
-  data: CurrencyResponse[]
-}
-
-const resolveImage = (currency: string): any => {
-  let response: string
-
-  switch (currency) {
-    case "tarjeta":
-      response = "card"
-      break
-    case "btc":
-      response = "btc"
-      break
-    case "eth":
-      response = "eth"
-      break
-    case "cripto":
-      response = "usdc"
-      break
-    case "blue":
-      response = "usd"
-      break
-    default:
-      response = "usd"
-      break
-  }
-
-  return response
-}
+import CryptoJson from "../data/crypto.json" assert { type: "json" }
+import DollarJson from "../data/dollar.json" assert { type: "json" }
+import CurrenciesResponse from "../types/CurrenciesResponse"
+import resolveCurrencyImage from "./resolveCurrencyImage"
 
 export async function getCurrenciesQuotes() {
-  const response: Response = {
+  const response: CurrenciesResponse = {
     status: 200,
     data: [],
   }
 
   try {
-    const dollarResponse = Dollar /* await getDollarQuotes() */
+    const dollarResponse = DollarJson /* await getDollarQuotes() */
     dollarResponse.forEach(
       ({ compra, fechaActualizacion, moneda, nombre, casa, venta }) => {
         if (casa === "tarjeta" || casa === "cripto" || casa === "blue") {
@@ -60,7 +20,7 @@ export async function getCurrenciesQuotes() {
             updateDate: new Date(fechaActualizacion),
             buy: compra,
             currency: moneda,
-            image: resolveImage(casa),
+            image: resolveCurrencyImage(casa),
             name: nombre,
             sell: venta,
           })
@@ -68,7 +28,7 @@ export async function getCurrenciesQuotes() {
       }
     )
 
-    const cryptoResponse = Crypto /* await getCryptoQuotes() */
+    const cryptoResponse = CryptoJson /* await getCryptoQuotes() */
 
     cryptoResponse.data.forEach(({ name, quote, slug, symbol }) => {
       const { last_updated, price, percent_change_1h } = quote.USD
@@ -78,12 +38,13 @@ export async function getCurrenciesQuotes() {
         currency: slug,
         sell: null,
         updateDate: new Date(last_updated),
-        image: resolveImage(symbol.toLowerCase()),
+        image: resolveCurrencyImage(symbol.toLowerCase()),
         percentaje: Number(percent_change_1h.toFixed(2)),
       })
     })
   } catch (err) {
     console.log("error al obtener datos de la api", err)
+    response.status = 500
   }
 
   return response
