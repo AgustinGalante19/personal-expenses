@@ -2,10 +2,6 @@
 
 import Crypto from "../data/crypto.json" assert { type: "json" }
 import Dollar from "../data/dollar.json" assert { type: "json" }
-import CRYPTO_API_RESPONSE from "../types/CRYPTO_API_RESPONSE"
-import DOLLAR_API_RESPONSE from "../types/DOLLAR_API_RESPONSE"
-import getCryptoQuotes from "./getCryptoQuotes"
-import getDollarQuotes from "./getDollarQuotes"
 
 interface CurrencyResponse {
   currency: string
