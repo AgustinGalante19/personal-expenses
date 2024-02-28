@@ -4,6 +4,8 @@ import Crypto from "../data/crypto.json" assert { type: "json" }
 import Dollar from "../data/dollar.json" assert { type: "json" }
 import CRYPTO_API_RESPONSE from "../types/CRYPTO_API_RESPONSE"
 import DOLLAR_API_RESPONSE from "../types/DOLLAR_API_RESPONSE"
+import getCryptoQuotes from "./getCryptoQuotes"
+import getDollarQuotes from "./getDollarQuotes"
 
 interface CurrencyResponse {
   currency: string
@@ -47,9 +49,6 @@ const resolveImage = (currency: string): any => {
   return response
 }
 
-const CRYPTO_API_URL = process.env.CRYPTO_API_URL ?? ""
-const DOLLAR_API_URL = process.env.DOLLAR_API_URL ?? ""
-
 export async function getCurrenciesQuotes() {
   const response: Response = {
     status: 200,
@@ -57,25 +56,7 @@ export async function getCurrenciesQuotes() {
   }
 
   try {
-    const dollarRequest = await fetch(DOLLAR_API_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-
-    const dollarResponse: DOLLAR_API_RESPONSE[] = await dollarRequest.json()
-
-    const cryptoRequest = await fetch(CRYPTO_API_URL + "?limit=2", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CMC_PRO_API_KEY": process.env.CRYPTO_API_KEY ?? "",
-      },
-    })
-
-    const cryptoResponse: CRYPTO_API_RESPONSE = await cryptoRequest.json()
-
+    const dollarResponse = Dollar /* await getDollarQuotes() */
     dollarResponse.forEach(
       ({ compra, fechaActualizacion, moneda, nombre, casa, venta }) => {
         if (casa === "tarjeta" || casa === "cripto" || casa === "blue") {
@@ -91,9 +72,10 @@ export async function getCurrenciesQuotes() {
       }
     )
 
+    const cryptoResponse = Crypto /* await getCryptoQuotes() */
+
     cryptoResponse.data.forEach(({ name, quote, slug, symbol }) => {
       const { last_updated, price, percent_change_1h } = quote.USD
-
       response.data.push({
         name,
         buy: Number(price.toFixed(2)),
