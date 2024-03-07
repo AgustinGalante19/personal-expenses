@@ -9,9 +9,17 @@ interface Props {
   percentaje?: number
   name: string
   imageName: string
+  updateDate: Date
 }
 
-function CurrencyCard({ imageName, name, percentaje, buy, sell }: Props) {
+function CurrencyCard({
+  imageName,
+  name,
+  percentaje,
+  buy,
+  sell,
+  updateDate,
+}: Props) {
   return (
     <div className={styles["currency-card-body"]}>
       <div className={styles["currency-img"]}>
@@ -36,7 +44,7 @@ function CurrencyCard({ imageName, name, percentaje, buy, sell }: Props) {
             className={styles["currency-update"]}
             style={{ fontSize: ".6em", color: "#797979", fontWeight: "800" }}
           >
-            Update: 17:33
+            Update: {updateDate.toLocaleTimeString().slice(0,5)}
           </span>
         </div>
         <div className={styles["currency-price"]}>

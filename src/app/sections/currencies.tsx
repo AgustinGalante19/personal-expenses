@@ -13,6 +13,7 @@ async function Currencies() {
           percentaje={currency.percentaje}
           buy={currency.buy}
           sell={currency.sell}
+          updateDate={currency.updateDate}
         />
       ))}
     </div>
