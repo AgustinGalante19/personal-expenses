@@ -1,8 +1,9 @@
 :root {
+  /* colors */
   --primary: #49a580;
   --red: #ff4648;
   --dark-red: #942727;
-  --light-red: #FFA5A5;
+  --light-red: #ffa5a5;
   --secondary: #f1f6f2;
   --background: #f1f1f1;
   --white: #fff;
@@ -10,6 +11,9 @@
   --dark-gray: #1b1f1e;
   --light-gray: #f2f2f2;
   --gray: #797979;
+
+  /* sizes */
+  --xl: 2rem;
 }
 
 * {
