@@ -1,0 +1,54 @@
+.expenses-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+}
+
+.current-money {
+  background-color: var(--white);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.total-section {
+  font-weight: 800;
+  font-size: var(--lg);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.amount {
+  color: var(--primary);
+}
+
+.wallet {
+  border: 1px solid var(--light-gray);
+  display: flex;
+  align-items: center;
+  margin: 5px 0px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.amounts {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.logo {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.edit-button {
+  padding: 2px;
+  color: var(--primary);
+  transition: all 0.2s;
+}
+
+.edit-button:hover {
+  background-color: var(--light-gray);
+}

@@ -1,4 +1,5 @@
 import Currencies from "./sections/currencies"
+import ExpensesStatus from "./sections/expenses-status"
 import Hero from "./sections/hero"
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main className='container'>
       <Hero />
       <Currencies />
+      <ExpensesStatus />
     </main>
   )
 }
