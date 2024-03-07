@@ -30,7 +30,7 @@
 }
 .currency-value {
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 800;
 
   display: block;
 }
@@ -51,8 +51,8 @@
 }
 
 .negative {
-  color: var(--red);
-  background-color: #ffb9ba;
+  color: var(--dark-red);
+  background-color: var(--light-red);
 }
 
 .buy {
