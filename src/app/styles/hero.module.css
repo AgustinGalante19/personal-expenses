@@ -1,4 +1,4 @@
 .title {
-  font-size: 2em;
+  font-size: var(--xl);
   font-weight: 800;
 }
