@@ -1,0 +1,29 @@
+.provider {
+  display: flex;
+  position: absolute;
+  z-index: 9999;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: absolute;
+  background-color: var(--white);
+  min-width: 500px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--lg);
+  font-weight: 700;
+}
