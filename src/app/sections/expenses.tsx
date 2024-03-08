@@ -1,36 +1,9 @@
 import expensesStyles from "@/app/styles/expenses.module.css"
-import WalletItem from "../components/wallet-item"
-import Wallet from "@/app/types/Wallet"
+import AccountItem from "../components/account-item"
 import Pencil from "../assets/Pencil"
+import Account from "../types/Account"
 
-const WALLETS: Wallet[] = [
-  {
-    name: "Brubank",
-    amount: "24.500",
-    logo: "Brubank",
-    color: "#6742e0",
-  },
-  {
-    name: "Lemon",
-    amount: "140.400",
-    logo: "Lemon",
-    color: "#43CD4B",
-  },
-  {
-    name: "Fiwind",
-    amount: "0.00",
-    logo: "Fiwind",
-    color: "#E8AE00",
-  },
-  {
-    name: "Ualá",
-    amount: "4.645",
-    logo: "Uala",
-    color: "#022a9b",
-  },
-]
-
-function ExpensesStatus() {
+function ExpensesStatus({ accounts }: { accounts: Account[] }) {
   return (
     <section className={expensesStyles["expenses-grid"]}>
       <div className={expensesStyles["current-money"]}>
@@ -45,12 +18,13 @@ function ExpensesStatus() {
           </div>
         </div>
         <div className={expensesStyles["wallets"]}>
-          {WALLETS.map(({ amount, logo, name, color }) => (
-            <WalletItem
-              key={name}
+          {accounts.map(({ amount, logo, account_name, color, account_id }) => (
+            <AccountItem
+              account_id={account_id}
+              key={account_id}
               amount={amount}
               logo={logo}
-              name={name}
+              account_name={account_name}
               color={color}
             />
           ))}
