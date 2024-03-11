@@ -1,23 +1,39 @@
+"use client"
+
 import expensesStyles from "@/app/styles/expenses.module.css"
 import AccountItem from "../components/account-item"
 import Pencil from "../assets/Pencil"
 import Account from "../types/Account"
+import { useState } from "react"
+import AccountModal from "../components/account-modal"
 
-function ExpensesStatus({ accounts }: { accounts: Account[] }) {
+function ExpensesStatus({
+  accounts,
+  total,
+}: {
+  accounts: Account[]
+  total: number
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <section className={expensesStyles["expenses-grid"]}>
       <div className={expensesStyles["current-money"]}>
         <div className={expensesStyles["total-section"]}>
           <div>
-            Total: <span className={expensesStyles["amount"]}>$200.000</span>
+            Total: <span className={expensesStyles.amount}>${total}</span>
           </div>
           <div>
-            <button className={expensesStyles["edit-button"]}>
+            <button
+              className={expensesStyles["edit-button"]}
+              type='button'
+              onClick={() => setIsOpen(true)}
+            >
               <Pencil />
             </button>
           </div>
         </div>
-        <div className={expensesStyles["wallets"]}>
+        <div className={expensesStyles.wallets}>
           {accounts.map(({ amount, logo, account_name, color, account_id }) => (
             <AccountItem
               account_id={account_id}
@@ -30,10 +46,12 @@ function ExpensesStatus({ accounts }: { accounts: Account[] }) {
           ))}
         </div>
       </div>
-      <div
-        style={{ backgroundColor: "#aaa" }}
-        className={expensesStyles["expenses"]}
-      ></div>
+      <div className={expensesStyles.expenses}>expenses</div>
+      <AccountModal
+        handleClose={() => setIsOpen(false)}
+        isOpen={isOpen}
+        accounts={accounts}
+      />
     </section>
   )
 }

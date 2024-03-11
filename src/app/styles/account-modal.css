@@ -1,0 +1,21 @@
+.body {
+  padding: 10px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+.submit {
+  padding: 10px 15px;
+  background-color: #49a580;
+  color: white;
+  font-weight: bold;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+}
