@@ -1,7 +1,7 @@
 import "@/app/styles/modal.css"
 import Close from "../assets/Close"
 
-interface Props {
+export interface ModalProps {
   isOpen?: boolean
   handleClose?: () => void
   children?: React.ReactNode
@@ -12,8 +12,8 @@ function Modal({
   children,
   handleClose,
   isOpen = true,
-  title = "tituloo",
-}: Props) {
+  title = "",
+}: ModalProps) {
   return (
     isOpen && (
       <div className='provider'>
