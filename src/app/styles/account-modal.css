@@ -8,13 +8,6 @@
   gap: 15px;
 }
 
-.submit {
-  padding: 10px 15px;
-  background-color: #49a580;
-  color: white;
-  font-weight: bold;
-}
-
 footer {
   display: flex;
   justify-content: flex-end;

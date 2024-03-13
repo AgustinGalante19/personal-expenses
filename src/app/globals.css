@@ -58,6 +58,34 @@ button {
   background-color: transparent;
 }
 
+.submit {
+  padding: 10px 15px;
+  background-color: var(--primary);
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.submit:disabled {
+  background-color: rgba(73, 165, 128, 0.7);
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1000px) {
   .container {
     padding: 10px;
