@@ -2,8 +2,8 @@ import "@/app/styles/modal.css"
 import Close from "../assets/Close"
 
 export interface ModalProps {
-  isOpen?: boolean
-  handleClose?: () => void
+  isOpen: boolean
+  handleClose: () => void
   children?: React.ReactNode
   title?: string
 }
